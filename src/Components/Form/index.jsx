@@ -72,7 +72,6 @@ function Form() {
             <InputForm onChange = {(e) => setEmail(e.target.value)} placeholder = "E-mail" required />
             <InputForm onChange = {(e) => setPassword(e.target.value)} placeholder = "Senha" type = "password" required />
             <ButtonForm>Registrar</ButtonForm>
-            {/* <WarningForm>Seus dados estão protegidos pela lei LGPD, Lei nº 13.709/2018, é a lei brasileira aprovada em 2018 que controla a privacidade e o uso/tratamento de dados pessoais, e que também altera os artigos 7º e 16º do Marco Civil da Internet.</WarningForm> */}
         </FormContainer>
     )
 }
