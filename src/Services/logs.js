@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const registerApi = axios.create({baseURL: "http://localhost:8000"})
+const registerApi = axios.create({baseURL: "https://log-back-end.vercel.app/"})
 
 async function getLogs() {
     const logsApi = await registerApi.get("/register") 
