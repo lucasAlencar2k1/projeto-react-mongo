@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 import { createLog } from "../../Services/logs"
+import warningImage from "../../Img/warning.png"
 
 const FormContainer = styled.form`
     display: flex;
@@ -42,14 +43,29 @@ const ButtonForm = styled.button`
     }
 `
 
-// const WarningForm = styled.p`
-//     width: 350px;
-//     color: #FFFFFF;
-//     font-size: 18px;
-//     background-color: #eaeaea1b;
-//     padding: 20px;
-//     border-radius: 8px;
-// `
+const WarningContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+`
+
+const WarningImg = styled.img`
+    width: 50px;
+`
+
+const WarningForm = styled.p`
+    width: 350px;
+    color: #FFFFFF;
+    font-size: 18px;
+    background-color: #eaeaea1b;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+`
 
 function Form() {
 
@@ -60,7 +76,7 @@ function Form() {
 
     async function createReg(e) {
         e.preventDefault()
-        const userInfo = {email, password}
+        const userInfo = { email, password }
         const newReg = await createLog(userInfo)
         console.log(newReg)
         alert("User Created!")
@@ -68,11 +84,14 @@ function Form() {
     }
 
     return (
-        <FormContainer onSubmit = {createReg}>
+        <FormContainer onSubmit={createReg}>
             <FormDescription>Insira um e-mail válido e senha</FormDescription>
-            <InputForm onChange = {(e) => setEmail(e.target.value)} placeholder = "E-mail" required />
-            <InputForm onChange = {(e) => setPassword(e.target.value)} placeholder = "Senha" type = "password" required />
+            <InputForm onChange={(e) => setEmail(e.target.value)} placeholder="E-mail" required />
+            <InputForm onChange={(e) => setPassword(e.target.value)} placeholder="Senha" type="password" required />
             <ButtonForm>Registrar</ButtonForm>
+            <WarningContainer>
+                <WarningForm><WarningImg src = {warningImage} />Seus dados estão protegidos pela lei LGPD. A Lei Geral de Proteção de Dados (LGPD) é a Lei nº 13.709, de 14 de agosto de 2018, que estabelece regras para o tratamento de dados pessoais</WarningForm>
+            </WarningContainer>
         </FormContainer>
     )
 }
